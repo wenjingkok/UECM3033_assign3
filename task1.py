@@ -1,13 +1,17 @@
 import numpy as np
 import sympy as sy
+from numpy.polynomial import legendre
 #Your optional code here
 #You can import some modules or create additional functions
 
 # DO NOT CHANGE THE NAME OF gausslegendre() function
 def gausslegendre(f, a, b, n=20):
     ans = 0
-    # Edit here to implement your code
-
+    #Default interval for leggauss is [-1, 1]
+    x, w = legendre.leggauss(n)
+    #Translate the x value to new interval [a, b]
+    t = 0.5 * (x * (b - a) + (b + a))
+    ans = sum(w * f(t)) * 0.5 * (b - a)
     return ans
 
 if __name__ == "__main__":
